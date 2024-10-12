@@ -1,12 +1,19 @@
-﻿# Selenium 모듈 불러오기
+﻿# 관리자 권한으로 실행하기
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Selenium 모듈 불러오기
 Import-Module Selenium
 
 # ChromeDriver 경로 설정
-$chromeDriverPath = "C:\tools\chromedriver\chromedriver.exe"
+$chromeDriverPath = "C:\tools\chromedriver"
 
 # ChromeDriver 실행
 $chromeOptions = New-Object OpenQA.Selenium.Chrome.ChromeOptions
+
+# ChromeDriverService 생성 (경로를 직접 사용)
 $chromeDriverService = [OpenQA.Selenium.Chrome.ChromeDriverService]::CreateDefaultService($chromeDriverPath)
+
+# ChromeDriver 객체 생성
 $chromeDriver = New-Object OpenQA.Selenium.Chrome.ChromeDriver($chromeDriverService, $chromeOptions)
 
 # 구글 웹사이트 열기
